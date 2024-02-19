@@ -90,7 +90,7 @@ class App:
         st.write("### Scatter Plot")
         values = list(self.dataset.columns.values)
         scatter_x = st.selectbox('Select X (default: radius_mean)', values, index=values.index('radius_mean'))
-        scatter_y = st.selectbox('Select Y (default: texture_mean', values, index=values.index('texture_mean'))
+        scatter_y = st.selectbox('Select Y (default: texture_mean)', values, index=values.index('texture_mean'))
 
         plt.figure(figsize=(5,5))
         scatter = sns.scatterplot(self.dataset, x=scatter_x, y=scatter_y, hue='diagnosis', palette={1:'red', 0:'green'}, alpha=.5)
@@ -166,7 +166,7 @@ class App:
         if self.classifier_name != 'Naive Bayes':
             best_params = self.gridsearch()
             self.model.set_params(**best_params)
-            st.write('Best Parameters (GridSearchCV)')
+            st.write('#### Best Parameters (GridSearchCV)')
             st.write(best_params)
 
         # train
@@ -176,11 +176,12 @@ class App:
         plt.clf()
         scores, heatmap = self.evaluate()
 
-        st.write('Test Results')
+        st.write('#### Test Results')
         st.write(f"Accuracy Score: :green[{scores['Accuracy']}]")
         st.write(f"Precision Score: :green[{scores['Precision']}]")
         st.write(f"Recall Score: :green[{scores['Recall']}]")
         st.write(f"F1 Score: :green[{scores['F1']}]")
+        st.write('#### Confusion Matrix')
         st.pyplot(heatmap.figure)
 
 
