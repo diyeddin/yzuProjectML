@@ -152,3 +152,8 @@ class App:
         # evaluation = f"Accuracy Score: {scores['Accuracy']} - Precision Score: {scores['Precision']} - Recall Score: {scores['Recall']} - F1 Score: {scores['F1']}"
         st.write(scores)
         st.pyplot(heatmap.figure)
+
+
+if __name__ == "__main__":
+    app = App()
+    app.run()
