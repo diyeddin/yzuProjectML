@@ -154,7 +154,9 @@ class App:
                   'Recall':recall_score(self.y_test, y_pred, average='weighted'), 
                   'F1':f1_score(self.y_test, y_pred, average='weighted')}
         cm = confusion_matrix(self.y_test, y_pred)
-        heatmap = sns.heatmap(cm, annot=True)
+        heatmap = sns.heatmap(cm, annot=True, linecolor='red', linewidths=0.01)
+        plt.xlabel('y_pred')
+        plt.ylabel('y_true')
 
         return scores, heatmap
 
